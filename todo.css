@@ -1,0 +1,80 @@
+html,body {
+    margin : 0%;
+    height : 100%;
+}
+.topRectangle {
+    background-color: rgba(10, 60, 213, 0.82);
+    width : 100%;
+    height : 9%;
+}
+.material-symbols-outlined {
+    color : white;
+    position : absolute;
+    left : 0.8%;
+    top : 2%;
+}
+.symbols-outlined {
+    width : 3.8%;
+    height : 100%;
+}
+.symbols-outlined:hover {
+    background-color : rgba(22, 45, 156, 0.82);
+    cursor : pointer;
+}
+.toDoAlign {
+    margin : -2.8% 0% 0% 4%;
+    font-family : 'Poppins', sans-serif;
+    color : white;
+}
+.toDo:hover {
+    text-decoration : underline;
+    cursor : pointer;
+}
+.whiteRectangle {
+    background-color : white;
+    width : 31%;
+    margin : -1.8% 0% 0% 31%;
+    height : 64%;
+}
+.search {
+    transform: rotate(-275deg);
+    position : absolute;
+    left : 33%;
+    top: 2.4%;
+}
+.search-icon-color {
+    color: #7683e9;
+}
+.leftRectangle {
+    background-color : lightgray;
+    width : 25%;
+    height : 32.27em;
+    margin-top : 0.58%;
+}
+.fontAlign {
+    position : absolute;
+    top : 25%;
+    left : 2%;
+}
+.fontAlign:hover {
+    background-color: aqua;
+}
+.task {
+    margin : 9% 0% 0% 45%;
+}
+.boxWidth {
+    position: absolute;
+    width : 62%;
+    height : 3.7em;
+    left : 27%;
+    top : 42%;
+}
+.submitButton {
+    position : absolute;
+    width : 7%;
+    left : 91%;
+    top : 42%;
+    height : 10%;
+    background-color : #6dd9bb;
+    border-radius : 55%;
+}
