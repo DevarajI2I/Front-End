@@ -78,3 +78,22 @@ html,body {
     background-color : #6dd9bb;
     border-radius : 55%;
 }
+.addTask {
+    border : 1px solid;
+    background-color : #6dd9bb;
+    height : 13%;
+    text-align : center;
+    margin-top : 1.8%;
+}
+.taskBackground {
+    background-color : transparent;
+    position : absolute;
+    width : 62.5%;
+    top : 56%;
+    left : 27.3%;
+    height : 43.6%;
+    overflow : auto;
+}
+.removeButton{
+    margin-left : 91%;
+}
