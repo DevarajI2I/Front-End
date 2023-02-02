@@ -96,4 +96,14 @@ html,body {
 }
 .removeButton{
     margin-left : 91%;
+    position : relative;
+    top : -44%;
+}
+#checkBox {
+    position : relative;
+    right : 46%;
+    top : -106%
+}
+#complete {
+    text-decoration : line-through;
 }

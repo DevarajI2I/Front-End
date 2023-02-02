@@ -7,19 +7,29 @@ function addTask() {
         return false;
     }
     document.getElementById("tasks").appendChild(text);
+
     let removeTask = document.createElement('input');
     removeTask.className = "removeButton";
     removeTask.setAttribute('type','button');
     removeTask.setAttribute("value","Remove");
     removeTask.setAttribute("id","removeButton");
-    removeTask.addEventListener('click',function(e) {
+    removeTask.addEventListener('click',function() {
           text.parentNode.removeChild(text);
     }, false);
     text.appendChild(removeTask);
+    document.getElementById("inputValue").value = "";
+
+    let checkBox = document.createElement('input');
+    checkBox.setAttribute("id","checkBox");
+    checkBox.type = "checkbox";
+    checkBox.setAttribute("onchange","completedTask(checked,this)");
+    text.appendChild(checkBox);
+
 }
-// var i;
-//     for (i = 0; i < text.length; i++) {
-//     let span = document.createElement("span");
-//     let remove = document.createTextNode("\u00D7");
-//     span.appendChild(remove);
-//     }
+function completedTask(isChecked,element) {
+    if (isChecked) {
+        element.parentElement.style.backgroundColor = "lightgray";
+    } else {
+        element.parentElement.style.backgroundColor = "#6dd9bb";
+    }
+}
