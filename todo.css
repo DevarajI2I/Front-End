@@ -81,7 +81,7 @@ html,body {
 .addTask {
     border : 1px solid;
     background-color : #6dd9bb;
-    height : 13%;
+    height : 33px;
     text-align : center;
     margin-top : 1.8%;
 }
@@ -92,7 +92,6 @@ html,body {
     top : 56%;
     left : 27.3%;
     height : 43.6%;
-    overflow : auto;
 }
 .removeButton{
     margin-left : 91%;
@@ -104,6 +103,17 @@ html,body {
     right : 46%;
     top : -106%
 }
-#complete {
-    text-decoration : line-through;
+#pendingTask {
+    height : 100%;
+}
+#specifyTask {
+    overflow : auto;
+    max-height : 49%;
+}
+#pendingTaskHeight {
+    max-height : 52%;
+    overflow : auto;
+}
+#completedTag {
+    display : none;
 }
