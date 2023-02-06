@@ -1,9 +1,13 @@
 function addTask() {
     let text = document.createElement("div");
     text.className = "addTask";
-    textValue = text.innerHTML = document.getElementById("inputValue").value;
+    let taskValue = document.createElement("input");
+    checkText = taskValue.value = document.getElementById("inputValue").value;
+    taskValue.className = "taskvalueAlign";
+    taskValue.disabled = true;
+    text.appendChild(taskValue);
     
-    if (textValue == "") {
+    if (checkText == "") {
         alert("Add Task is mandatory !");
         return false;
     }
@@ -14,12 +18,17 @@ function addTask() {
     removeTask.setAttribute('type','button');
     removeTask.setAttribute("value","Remove");
     removeTask.setAttribute("id","removeButton");
-    removeTask.addEventListener('click',function() {
-        let warningText = "Are You Sure Delete This Task !";
-        if (confirm(warningText) == true) {
-          text.parentNode.removeChild(text);
-        }
-    }, false);
+    // removeTask.addEventListener('click',function() {
+    //     let warningText = "Are You Sure Delete This Task !";
+    //     let alertDiv = document.createElement("div");
+    //     alertDiv.className = "alertDivAlign";
+    //     text.parentNode(alertDiv);
+        //document.body.appendChild(alertDiv);
+        // if (confirm(warningText) == true) {
+        //   text.parentNode.removeChild(text);
+        // }
+    // }, false);
+    removeTask.setAttribute("onclick","deleteAlertBox(this)");
     text.appendChild(removeTask);
     document.getElementById("inputValue").value = "";
 
@@ -27,8 +36,19 @@ function addTask() {
     checkBox.setAttribute("id","checkBox");
     checkBox.type = "checkbox";
     checkBox.setAttribute("onchange","completedTask(checked,this)");
-    editTask();
     text.appendChild(checkBox);
+
+    let editButton = document.createElement("input");
+    editButton.setAttribute("type","button");
+    editButton.setAttribute("value","Edit");
+    editButton.className = "editButtonAlign";
+    editButton.addEventListener("click",function() {
+        removeTask.previousSibling.disabled = false;
+    }, false);
+    editButton.addEventListener("dblclick",function() {
+        removeTask.previousSibling.disabled = true;
+    },);
+    text.appendChild(editButton);
 }
 function completedTask(isChecked,element) {
     if (isChecked) {
@@ -36,8 +56,7 @@ function completedTask(isChecked,element) {
         document.getElementById("completedTag").style.display = "block";
         subDiv.className = "completedDiv";
         subDiv = element.parentElement;
-        document.getElementById("specifyTask").appendChild(subDiv);
-        
+        document.getElementById("specifyTask").appendChild(subDiv);      
     } else {
         count = document.getElementById("pendingTask").childElementCount-1;
         if (count == 0) {
@@ -46,9 +65,14 @@ function completedTask(isChecked,element) {
         document.getElementById("pendingTask").appendChild(element.parentElement);
     }
 }
-function editTask() {
-    let edit = document.createElement("input");
-    edit.setAttribute("type","button");
-    edit.appendChild(parentElement);
-
+function deleteAlertBox(element) {
+    
+    let alertDiv = document.createElement("div");
+    let message = document.createElement("p");
+    message.className = "alertMessage";
+    alertDiv.className = "alertDivAlign";
+    message.innerHTML = "Are You Sure Delete This Task!";
+    alertDiv.appendChild(message);
+    //warningText.appendChild(alertDiv);
+    document.body.appendChild(alertDiv);
 }

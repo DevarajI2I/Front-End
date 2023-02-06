@@ -96,12 +96,12 @@ html,body {
 .removeButton{
     margin-left : 91%;
     position : relative;
-    top : -44%;
+    top : -66%;
 }
 #checkBox {
     position : relative;
     right : 46%;
-    top : -106%
+    top : -133%
 }
 #pendingTask {
     height : 100%;
@@ -116,4 +116,22 @@ html,body {
 }
 #completedTag {
     display : none;
+}
+.editButtonAlign {
+    left : 35%;
+    position : relative;
+    top : -133%;
+}
+.taskvalueAlign {
+    margin-top : 0.7%;
+}
+.alertDivAlign {
+    background-color: rgb(249, 247, 116);
+    width: 60%;
+    height: 40%;
+    position: relative;
+    left : 27%;
+}
+.alertMessage {
+    text-align: center;
 }
