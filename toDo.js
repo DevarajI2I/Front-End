@@ -1,7 +1,10 @@
 function addTask() {
     let text = document.createElement("div");
-    text.className = "addTask";
+    let removeTask = document.createElement('input');
+    let checkBox = document.createElement('input');
+    let editButton = document.createElement("input");
     let taskValue = document.createElement("input");
+    text.className = "addTask";
     checkText = taskValue.value = document.getElementById("inputValue").value;
     taskValue.className = "taskvalueAlign";
     taskValue.disabled = true;
@@ -13,32 +16,19 @@ function addTask() {
     }
     document.getElementById("pendingTask").appendChild(text);
 
-    let removeTask = document.createElement('input');
     removeTask.className = "removeButton";
     removeTask.setAttribute('type','button');
     removeTask.setAttribute("value","Remove");
     removeTask.setAttribute("id","removeButton");
-    // removeTask.addEventListener('click',function() {
-    //     let warningText = "Are You Sure Delete This Task !";
-    //     let alertDiv = document.createElement("div");
-    //     alertDiv.className = "alertDivAlign";
-    //     text.parentNode(alertDiv);
-        //document.body.appendChild(alertDiv);
-        // if (confirm(warningText) == true) {
-        //   text.parentNode.removeChild(text);
-        // }
-    // }, false);
     removeTask.setAttribute("onclick","deleteAlertBox(this)");
     text.appendChild(removeTask);
     document.getElementById("inputValue").value = "";
 
-    let checkBox = document.createElement('input');
     checkBox.setAttribute("id","checkBox");
     checkBox.type = "checkbox";
     checkBox.setAttribute("onchange","completedTask(checked,this)");
     text.appendChild(checkBox);
 
-    let editButton = document.createElement("input");
     editButton.setAttribute("type","button");
     editButton.setAttribute("value","Edit");
     editButton.className = "editButtonAlign";
@@ -56,7 +46,7 @@ function completedTask(isChecked,element) {
         document.getElementById("completedTag").style.display = "block";
         subDiv.className = "completedDiv";
         subDiv = element.parentElement;
-        document.getElementById("specifyTask").appendChild(subDiv);      
+        document.getElementById("specifyTask").appendChild(subDiv);
     } else {
         count = document.getElementById("pendingTask").childElementCount-1;
         if (count == 0) {
@@ -65,14 +55,27 @@ function completedTask(isChecked,element) {
         document.getElementById("pendingTask").appendChild(element.parentElement);
     }
 }
-function deleteAlertBox(element) {
-    
+function deleteAlertBox(element) { 
     let alertDiv = document.createElement("div");
     let message = document.createElement("p");
+    let okButton = document.createElement("button");
+    let cancelButton = document.createElement("button");
     message.className = "alertMessage";
     alertDiv.className = "alertDivAlign";
     message.innerHTML = "Are You Sure Delete This Task!";
     alertDiv.appendChild(message);
-    //warningText.appendChild(alertDiv);
+    okButton.innerText = "ok";
+    okButton.className = "okButtonAlign";
+    okButton.addEventListener("click",function() {
+        alertDiv.remove();
+        element.parentElement.remove();
+    } );
+    cancelButton.innerText = "Cancel";
+    cancelButton.className = "cancelButtonAlign";
+    cancelButton.addEventListener("click",function() {
+        alertDiv.remove();
+    })
+    alertDiv.appendChild(cancelButton);
+    alertDiv.appendChild(okButton);
     document.body.appendChild(alertDiv);
 }

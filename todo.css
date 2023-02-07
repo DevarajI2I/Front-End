@@ -126,12 +126,26 @@ html,body {
     margin-top : 0.7%;
 }
 .alertDivAlign {
-    background-color: rgb(249, 247, 116);
-    width: 60%;
-    height: 40%;
-    position: relative;
-    left : 27%;
+    background-color : rgb(249, 247, 116);
+    width : 45%;
+    height : 30%;
+    position : relative;
+    left : 34%;
 }
 .alertMessage {
-    text-align: center;
+    top : 15%;
+    position : absolute;
+    left : 35%;
+}
+.okButtonAlign {
+    width : 7%;
+    height : 14%;
+    margin-top : 19%;
+    margin-left : -46%;
+}
+.cancelButtonAlign {
+    width : 9%;
+    height : 14%;
+    margin-top : 19%;
+    margin-left : 68%;
 }
