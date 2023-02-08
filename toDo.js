@@ -22,7 +22,6 @@ function addTask() {
     removeTask.setAttribute("id","removeButton");
     removeTask.setAttribute("onclick","deleteAlertBox(this)");
     text.appendChild(removeTask);
-    document.getElementById("inputValue").value = "";
 
     checkBox.setAttribute("id","checkBox");
     checkBox.type = "checkbox";
@@ -39,6 +38,8 @@ function addTask() {
         removeTask.previousSibling.disabled = true;
     },);
     text.appendChild(editButton);
+    apiHit();
+    document.getElementById("inputValue").value = "";
 }
 function completedTask(isChecked,element) {
     if (isChecked) {
@@ -78,4 +79,18 @@ function deleteAlertBox(element) {
     alertDiv.appendChild(cancelButton);
     alertDiv.appendChild(okButton);
     document.body.appendChild(alertDiv);
+}
+function apiHit() {
+    let addTasks = document.getElementById("inputValue").value;
+    let addTaskDatabase = { taskName : addTasks};
+    fetch ('http://localhost:8080/api/v1/todo/addTask', {
+    method : 'POST',
+    headers : {
+        'Content-Type' : 'application/json'
+    },
+    body : JSON.stringify(addTaskDatabase)
+    } )
+    .then((response) => response.json())
+    .then((addTaskDatabase) => { console.log('Succes',addTaskDatabase); })
+    .catch((error) => { console.log('Error',error); });
 }
