@@ -16,4 +16,9 @@ public class TodoMapper {
 		Todo todo = mapper.map(todoDto, Todo.class);
 		return todo;
 	}
+	
+	public TodoDto addTaskDto(Todo todo) {
+		TodoDto todoDto = mapper.map(todo, TodoDto.class);
+		return todoDto;
+	}
 }

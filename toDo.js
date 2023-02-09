@@ -1,26 +1,26 @@
-function addTask() {
+window.addEventListener("load", () => getTaskValue());
+function addTask(element) {
     let text = document.createElement("div");
     let removeTask = document.createElement('input');
     let checkBox = document.createElement('input');
     let editButton = document.createElement("input");
     let taskValue = document.createElement("input");
     text.className = "addTask";
-    checkText = taskValue.value = document.getElementById("inputValue").value;
+    
     taskValue.className = "taskvalueAlign";
     taskValue.disabled = true;
+    taskValue.value = element.taskName;
     text.appendChild(taskValue);
-    
-    if (checkText == "") {
-        alert("Add Task is mandatory !");
-        return false;
-    }
     document.getElementById("pendingTask").appendChild(text);
 
+    let elements = element;
     removeTask.className = "removeButton";
     removeTask.setAttribute('type','button');
     removeTask.setAttribute("value","Remove");
     removeTask.setAttribute("id","removeButton");
-    removeTask.setAttribute("onclick","deleteAlertBox(this)");
+    removeTask.addEventListener("click",function() {
+        deleteAlertBox(removeTask,elements);
+    });
     text.appendChild(removeTask);
 
     checkBox.setAttribute("id","checkBox");
@@ -36,9 +36,11 @@ function addTask() {
     }, false);
     editButton.addEventListener("dblclick",function() {
         removeTask.previousSibling.disabled = true;
+        let editedText = removeTask.previousSibling.value;
+        element.taskName = editedText;
+        updateValueDatabase(element);
     },);
     text.appendChild(editButton);
-    apiHit();
     document.getElementById("inputValue").value = "";
 }
 function completedTask(isChecked,element) {
@@ -56,7 +58,7 @@ function completedTask(isChecked,element) {
         document.getElementById("pendingTask").appendChild(element.parentElement);
     }
 }
-function deleteAlertBox(element) { 
+function deleteAlertBox(removeValue,element) {
     let alertDiv = document.createElement("div");
     let message = document.createElement("p");
     let okButton = document.createElement("button");
@@ -69,20 +71,25 @@ function deleteAlertBox(element) {
     okButton.className = "okButtonAlign";
     okButton.addEventListener("click",function() {
         alertDiv.remove();
-        element.parentElement.remove();
+        deleteValueDatabase(element);
+        removeValue.parentElement.remove();
     } );
     cancelButton.innerText = "Cancel";
     cancelButton.className = "cancelButtonAlign";
     cancelButton.addEventListener("click",function() {
         alertDiv.remove();
-    })
+    } );
     alertDiv.appendChild(cancelButton);
     alertDiv.appendChild(okButton);
     document.body.appendChild(alertDiv);
 }
 function apiHit() {
     let addTasks = document.getElementById("inputValue").value;
-    let addTaskDatabase = { taskName : addTasks};
+    let addTaskDatabase = {taskName : addTasks};
+    if (addTasks == "") {
+        alert("Add Task Mandatory!");
+        return false;
+    }
     fetch ('http://localhost:8080/api/v1/todo/addTask', {
     method : 'POST',
     headers : {
@@ -93,4 +100,37 @@ function apiHit() {
     .then((response) => response.json())
     .then((addTaskDatabase) => { console.log('Succes',addTaskDatabase); })
     .catch((error) => { console.log('Error',error); });
+    getTaskValue();
+}
+function getTaskValue() {
+    let getValues = {
+        method : "GET",
+    }
+    let getValueDb = fetch("http://localhost:8080/api/v1/todo/getTask",getValues)
+    .then((response) => response.json())
+    .then((task) => { for (let values of task)
+     { addTask(values) } })
+    .then((getValues) => { console.log("success",getValues); })
+    .catch((error) => { console.log("Error",error); });
+}
+function deleteValueDatabase(removeValue) {
+    let deleteDatabase = {
+        method : "DELETE",
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(removeValue)
+    }
+    fetch("http://localhost:8080/api/v1/todo/deleteTask",deleteDatabase);
+}
+function updateValueDatabase(updateValue) {
+    console.log(updateValue);
+    let updateDatabase = {
+        method : "PUT",
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(updateValue)
+    }
+    fetch("http://localhost:8080/api/v1/todo/editTask",updateDatabase);
 }
