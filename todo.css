@@ -92,6 +92,7 @@ html,body {
     top : 56%;
     left : 27.3%;
     height : 43.6%;
+    overflow : auto;
 }
 .removeButton{
     margin-left : 91%;
@@ -107,12 +108,10 @@ html,body {
     height : 100%;
 }
 #specifyTask {
-    overflow : auto;
     max-height : 49%;
 }
 #pendingTaskHeight {
-    max-height : 52%;
-    overflow : auto;
+    min-height : 0%;
 }
 #completedTag {
     display : none;
@@ -129,7 +128,7 @@ html,body {
     background-color : rgb(249, 247, 116);
     width : 45%;
     height : 30%;
-    position : relative;
+    position : fixed;
     left : 34%;
 }
 .alertMessage {

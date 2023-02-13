@@ -18,4 +18,5 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String taskName;
+	private boolean completedStatus;
 }
