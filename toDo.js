@@ -50,19 +50,6 @@ function addTask(element) {
     document.getElementById("inputValue").value = "";
 }
 function completedTask(checked,element) {
-    // if (element) {
-    //     let subDiv = document.createElement("div");
-    //     document.getElementById("completedTag").style.display = "block";
-    //     subDiv.className = "completedDiv";
-    //     subDiv = element.parentElement;
-    //     document.getElementById("specifyTask").appendChild(subDiv);
-    // } else {
-    //     count = document.getElementById("pendingTask").childElementCount-1;
-    //     if (count == 0) {
-    //         document.getElementById("completedTag").style.display = "none";
-    //     }
-    //     document.getElementById("pendingTask").appendChild(element.parentElement);
-    //}
     if (checked) {
         element.completedStatus = true;
         updateValueDatabase(element);
@@ -114,10 +101,18 @@ function apiHit() {
     getTaskValue();
 }
 function getTaskValue() {
+    let searchDiv = document.createElement("div");
+    searchDiv.className = "inputSearchText";
+    
+    //document.getElementById("demo").innerText = "demo";
+    console.log(searchDiv);
+    //searchTask = document.getElementById("whiteRectangle");
+    //searchTask.appendChild(searchDiv);
+
     let getValues = {
         method : "GET",
     }
-    let getValueDb = fetch("http://localhost:8080/api/v1/todo/getTask",getValues)
+    fetch("http://localhost:8080/api/v1/todo/getTask",getValues)
     .then((response) => response.json())
     .then((task) => { for (let values of task)
      { addTask(values)} 
@@ -148,8 +143,8 @@ function updateValueDatabase(updateValue) {
 }
 function assignCompletedTask(checked,element) {
     let subDiv = document.createElement("div");
-    let countSpan = document.createElement("span");
-    let count = document.getElementById("subDiv").childElementCount;
+    let hideTask = document.getElementById("completedTag");
+    let count = 0;
     subDiv.setAttribute("id","subDiv");
     let demo = {
         method : "GET",
@@ -157,21 +152,28 @@ function assignCompletedTask(checked,element) {
     fetch("http://localhost:8080/api/v1/todo/getTask",demo)
     .then((response) => response.json())
     .then((demos) => { for (let demoss of demos) {
-        if (demoss.completedStatus == true) {   
-            
-            document.getElementById("completedTag").style.display = "block";
+        if (demoss.completedStatus == true) { 
+            count ++;
+            hideTask.style.display = "block";
+            hideTask.innerText = "Completed Task : " + count;
             let parentValue = document.getElementById("getInputValues");
             subDiv.appendChild(parentValue);
             document.getElementById("specifyTask").appendChild(subDiv);
-            console.log(count);
-            
-            
         }
     }
     })
+        hideTask.addEventListener("click",function() {
+            if (subDiv.style.display == "none") {   
+                subDiv.style.display = "block";
+                } else  {  
+                    subDiv.style.display = "none";
+                }
+            })
     if(checked) {
         element.completedStatus = false;
         updateValueDatabase(element);
-        console.log(element.completedStatus);
     }
+}
+function searchTask() {
+    alert("hai");
 }
