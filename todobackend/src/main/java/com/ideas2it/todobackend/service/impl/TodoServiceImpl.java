@@ -44,4 +44,11 @@ public class TodoServiceImpl implements TodoService {
 		Todo todo = todoMapper.addTask(todoDto);
 		todoRepository.save(todo);
 	}
+
+	@Override
+	public List<TodoDto> searchTask(String todoValue) {
+	    List<Todo> todo = todoRepository.findByTaskNameContains(todoValue);
+	    List<TodoDto> todoDto = todo.stream().map(tasks -> todoMapper.addTaskDto(tasks)).collect(Collectors.toList());
+		return todoDto;
+	}
 }

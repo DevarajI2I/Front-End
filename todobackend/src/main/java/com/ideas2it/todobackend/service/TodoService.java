@@ -15,4 +15,6 @@ public interface TodoService {
 
 	public void editTask(TodoDto todoDto);
 
+	public List<TodoDto> searchTask(String todo);
+
 }

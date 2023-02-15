@@ -1,8 +1,9 @@
 window.addEventListener("load", function() {
     getTaskValue();
     assignCompletedTask();
+    searchTask();
 });
-function addTask(element) {
+function addTask(element) { 
     let text = document.createElement("div");
     let removeTask = document.createElement('input');
     let checkBox = document.createElement('input');
@@ -101,25 +102,15 @@ function apiHit() {
     getTaskValue();
 }
 function getTaskValue() {
-    let searchDiv = document.createElement("div");
-    searchDiv.className = "inputSearchText";
-    
-    //document.getElementById("demo").innerText = "demo";
-    console.log(searchDiv);
-    //searchTask = document.getElementById("whiteRectangle");
-    //searchTask.appendChild(searchDiv);
-
     let getValues = {
         method : "GET",
     }
     fetch("http://localhost:8080/api/v1/todo/getTask",getValues)
     .then((response) => response.json())
     .then((task) => { for (let values of task)
-     { addTask(values)} 
-    })
-    .then((getValues) => { ("success",getValues); })
-    .catch((error) => { ("Error",error); });
-}
+    { addTask(values) } 
+})
+} 
 function deleteValueDatabase(removeValue) {
     let deleteDatabase = {
         method : "DELETE",
@@ -146,13 +137,13 @@ function assignCompletedTask(checked,element) {
     let hideTask = document.getElementById("completedTag");
     let count = 0;
     subDiv.setAttribute("id","subDiv");
-    let demo = {
+    let assignedTask = {
         method : "GET",
     }
-    fetch("http://localhost:8080/api/v1/todo/getTask",demo)
+    fetch("http://localhost:8080/api/v1/todo/getTask",assignedTask)
     .then((response) => response.json())
-    .then((demos) => { for (let demoss of demos) {
-        if (demoss.completedStatus == true) { 
+    .then((completedTasks) => { for (let finished of completedTasks) {
+        if (finished.completedStatus == true) { 
             count ++;
             hideTask.style.display = "block";
             hideTask.innerText = "Completed Task : " + count;
@@ -165,7 +156,7 @@ function assignCompletedTask(checked,element) {
         hideTask.addEventListener("click",function() {
             if (subDiv.style.display == "none") {   
                 subDiv.style.display = "block";
-                } else  {  
+                } else  {
                     subDiv.style.display = "none";
                 }
             })
@@ -175,5 +166,30 @@ function assignCompletedTask(checked,element) {
     }
 }
 function searchTask() {
-    alert("hai");
+    let rectangle = document.getElementById("whiteRectangle");
+    let leftRectangle = document.getElementById("leftRectangle");
+    let searchInput = document.createElement("input");
+    searchInput.setAttribute("id","searchTask");
+    rectangle.addEventListener("click",function() {
+        searchInput.className = "inputSearchText";
+        searchInput.placeholder = "Search";
+        searchInput.style.display = "block";
+        document.body.appendChild(searchInput);
+        searchInput.addEventListener("keydown",function(event) {
+            if (event.key == "Enter") {
+                let getSearchValues  = document.getElementById("searchTask").value;
+                let searchLink = "http://localhost:8080/api/v1/todo/searchTask?taskName=" + getSearchValues;
+                let searchValue = fetch(searchLink);
+                searchValue.then(response => {
+                    response.json().then(result => {
+                        console.log(result);
+                    });
+                })
+               
+            }
+        })
+    })
+    leftRectangle.addEventListener("click",function() {
+        searchInput.style.display = "none";
+    })
 }
