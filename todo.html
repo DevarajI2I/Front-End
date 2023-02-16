@@ -38,14 +38,16 @@
             </div>
         </div>
     </div>
-    <div class = "task" >
-        <input class = "boxWidth" type = "text" placeholder = "  Add Task" id = "inputValue">
-        <button class = "submitButton" onclick = "return apiHit()">Add</button>
-    </div>
-    <div id = "tasks" class = "taskBackground">
-        <div id = "pendingTaskHeight">
-            <div id = "pendingTask"></div>
+    <div id = "searchHide">
+        <div>
+            <input class = "boxWidth" type = "text" placeholder = "  Add Task" id = "inputValue">
+            <button class = "submitButton" onclick = "return apiHit()">Add</button>
         </div>
-        <div id = "specifyTask"><span id = "completedTag"></span></div>
-    </div>        
+        <div id = "tasks" class = "taskBackground">
+            <div id = "pendingTaskHeight">
+                <div id = "pendingTask"></div>
+            </div>
+            <div id = "specifyTask"><span id = "completedTag"></span></div>
+        </div>  
+    </div>      
 </body>

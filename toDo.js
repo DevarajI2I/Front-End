@@ -49,6 +49,7 @@ function addTask(element) {
     text.setAttribute("id","getInputValues");
     text.appendChild(editButton);
     document.getElementById("inputValue").value = "";
+    return text;
 }
 function completedTask(checked,element) {
     if (checked) {
@@ -175,17 +176,22 @@ function searchTask() {
         searchInput.placeholder = "Search";
         searchInput.style.display = "block";
         document.body.appendChild(searchInput);
+
         searchInput.addEventListener("keydown",function(event) {
             if (event.key == "Enter") {
+                let searchDiv = document.createElement("div");
+                searchDiv.className = "searchDiv";
+                document.body.appendChild(searchDiv);
                 let getSearchValues  = document.getElementById("searchTask").value;
                 let searchLink = "http://localhost:8080/api/v1/todo/searchTask?taskName=" + getSearchValues;
                 let searchValue = fetch(searchLink);
                 searchValue.then(response => {
-                    response.json().then(result => {
-                        console.log(result);
-                    });
+                    response.json().then(result => { for (let results of result) {
+                       let list = addTask(results); 
+                       searchDiv.appendChild(list);               
+                       console.log(result);
+                    }});
                 })
-               
             }
         })
     })

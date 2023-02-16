@@ -105,7 +105,8 @@ html,body {
 #checkBox {
     position : relative;
     right : 46%;
-    top : -133%
+    top : -133%;
+    margin-left : 2%;
 }
 #pendingTask {
     height : 100%;
@@ -125,27 +126,27 @@ html,body {
     margin-top : 0.7%;
 }
 .alertDivAlign {
-    background-color : rgb(249, 247, 116);
-    width : 45%;
-    height : 30%;
+    background-color : rgb(237, 233, 233);
+    width : 30%;
+    height : 24%;
     position : fixed;
-    left : 34%;
+    left : 38%;
 }
 .alertMessage {
     top : 15%;
     position : absolute;
-    left : 35%;
+    left : 22%;
 }
 .okButtonAlign {
-    width : 7%;
+    width : 8%;
     height : 14%;
-    margin-top : 19%;
-    margin-left : -46%;
+    margin-top : 21%;
+    margin-left : -64%;
 }
 .cancelButtonAlign {
-    width : 9%;
+    width : 14%;
     height : 14%;
-    margin-top : 19%;
+    margin-top : 21%;
     margin-left : 68%;
 }
 .inputSearchText {
@@ -154,4 +155,12 @@ html,body {
     position : absolute;
     left : 34%;
     top : 3%;
+}
+.searchDiv {
+    background-color : white;
+    position : absolute;
+    width : 75%;
+    height : 91%;
+    top : 9%;
+    left : 25%;
 }

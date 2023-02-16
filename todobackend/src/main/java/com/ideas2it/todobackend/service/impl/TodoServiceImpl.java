@@ -30,7 +30,7 @@ public class TodoServiceImpl implements TodoService {
 	public List<TodoDto> getTask() {
 		List<Todo> todoList = todoRepository.findAll();
 		List<TodoDto> todoDto = todoList.stream().map(todo -> todoMapper.addTaskDto(todo)).collect
-				(Collectors.toList());		            
+				(Collectors.toList());   
 		return todoDto;
 	}
 
