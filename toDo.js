@@ -1,5 +1,6 @@
 window.addEventListener("load", function() {
-    getTaskValue();
+    login();
+    // getTaskValue();
     assignCompletedTask();
     searchTask();
 });
@@ -123,7 +124,6 @@ function deleteValueDatabase(removeValue) {
     fetch("http://localhost:8080/api/v1/todo/deleteTask",deleteDatabase);
 }
 function updateValueDatabase(updateValue) {
-    console.log(updateValue);
     let updateDatabase = {
         method : "PUT",
         headers : {
@@ -198,4 +198,63 @@ function searchTask() {
     leftRectangle.addEventListener("click",function() {
         searchInput.style.display = "none";
     })
+}
+function login() {
+    let login = document.createElement("div");
+    let loginDiv = document.createElement("div");
+    let loginText = document.createElement("div");
+    let loginForm = document.createElement("form");
+    let loginName = document.createElement("input");
+    let loginEmail = document.createElement("input");
+    let signUp = document.createElement("button");
+    let nameTag = document.createElement("span");
+    let emailTag = document.createElement("span");
+
+    loginDiv.className = "loginDiv";
+    login.className = "login";
+    loginText.className = "loginText";
+    loginName.className = "loginName";
+    loginEmail.className = "loginEmail";
+    signUp.className = "signUp";
+    nameTag.className = "nameTag";
+    emailTag.className = "emailTag";
+    loginEmail.placeholder = "Email - Id";
+    loginName.placeholder = "Name";
+    loginText.innerText = "Log - In";
+    nameTag.innerText = "Name  : ";
+    emailTag.innerText = "Email -Id  :"
+    signUp.innerHTML = "Sign up";
+
+    login.setAttribute("id","loginMain");
+    loginName.setAttribute("id","userName");
+    loginEmail.setAttribute("id","userEmail");
+
+    loginDiv.appendChild(loginText);
+    loginDiv.appendChild(loginForm);
+    loginForm.appendChild(nameTag);
+    loginForm.appendChild(emailTag);
+    loginForm.appendChild(loginName);
+    loginForm.appendChild(loginEmail);
+    loginForm.appendChild(signUp);
+    login.appendChild(loginDiv);
+    document.body.appendChild(login);
+    signUp.addEventListener("click",function() {
+        userData();
+    })
+}
+function userData() {
+    let userName = document.getElementById("userName").value;
+    let userEmail = document.getElementById("userEmail").value;
+    let userList = {emailId : userEmail,name : userName};
+    let userDatas = {
+        method : "POST",
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(userList)
+    }
+    fetch("http://localhost:8080/api/v1/user/add",userDatas)
+    document.getElementById("loginMain").style.display = "none";
+    getTaskValue();
+
 }
