@@ -28,4 +28,11 @@ public class UserServiceImpl implements UserService {
 		userRepository.save(user);
 	}
 
+	@Override
+	public UserDto getUser(UserDto userDto) {
+		User user = userRepository.findUserByEmailId(userDto.getEmailId());
+		UserDto userDt = userMapper.userDto(user);
+		return userDt;
+	}
+
 }

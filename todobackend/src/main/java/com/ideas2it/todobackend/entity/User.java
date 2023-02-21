@@ -27,7 +27,6 @@ public class User {
 	private int id;
 	private String name;
 	private String emailId;
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "userId")
+	@OneToMany(mappedBy = "user")
 	private List<Todo> taskName = new ArrayList<>(0);
 }

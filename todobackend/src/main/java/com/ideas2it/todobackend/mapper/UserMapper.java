@@ -28,4 +28,8 @@ public class UserMapper {
 		user.setTaskName(taskValue);
 		return user;
 	}
+	public UserDto userDto(User user) {
+		UserDto userDto = mapper.map(user, UserDto.class);
+		return userDto;
+	}
 }

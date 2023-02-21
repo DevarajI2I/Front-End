@@ -1,8 +1,5 @@
 window.addEventListener("load", function() {
-    login();
-    // getTaskValue();
-    assignCompletedTask();
-    searchTask();
+    welcomePage();
 });
 function addTask(element) { 
     let text = document.createElement("div");
@@ -84,9 +81,9 @@ function deleteAlertBox(removeValue,element) {
     alertDiv.appendChild(okButton);
     document.body.appendChild(alertDiv);
 }
-function apiHit() {
+function apiHit(userObject) {
     let addTasks = document.getElementById("inputValue").value;
-    let addTaskDatabase = {taskName : addTasks};
+    let addTaskDatabase = {taskName : addTasks,userId : userObject.id};
     if (addTasks == "") {
         alert("Add Task Mandatory!");
         return false;
@@ -101,13 +98,11 @@ function apiHit() {
     .then((response) => response.json())
     .then((addTaskDatabase) => { console.log('Succes',addTaskDatabase); })
     .catch((error) => { console.log('Error',error); });
-    getTaskValue();
 }
-function getTaskValue() {
-    let getValues = {
-        method : "GET",
-    }
-    fetch("http://localhost:8080/api/v1/todo/getTask",getValues)
+function getTaskValue(userObject) {
+    alert("get");
+    let getUserValues = userObject.id;
+    fetch("http://localhost:8080/api/v1/todo/getTask?d="+getUserValues)
     .then((response) => response.json())
     .then((task) => { for (let values of task)
     { addTask(values) } 
@@ -188,8 +183,7 @@ function searchTask() {
                 searchValue.then(response => {
                     response.json().then(result => { for (let results of result) {
                        let list = addTask(results); 
-                       searchDiv.appendChild(list);               
-                       console.log(result);
+                       searchDiv.appendChild(list);
                     }});
                 })
             }
@@ -225,6 +219,7 @@ function login() {
     emailTag.innerText = "Email -Id  :"
     signUp.innerHTML = "Sign up";
 
+    login.setAttribute("id","masterLogin")
     login.setAttribute("id","loginMain");
     loginName.setAttribute("id","userName");
     loginEmail.setAttribute("id","userEmail");
@@ -240,6 +235,7 @@ function login() {
     document.body.appendChild(login);
     signUp.addEventListener("click",function() {
         userData();
+        login.remove();
     })
 }
 function userData() {
@@ -253,8 +249,120 @@ function userData() {
         },
         body : JSON.stringify(userList)
     }
-    fetch("http://localhost:8080/api/v1/user/add",userDatas)
-    document.getElementById("loginMain").style.display = "none";
-    getTaskValue();
+    fetch("http://localhost:8080/api/v1/user/add",userDatas);
+    apiHit();
+}
+function todoPage(data) {
+    let topRectangle = document.createElement("div");
+    let symbolsOutlined = document.createElement("div");
+    let materialSymbols = document.createElement("span");
+    let toDoAlign = document.createElement("div");
+    let todo = document.createElement("span");
+    let leftRectangle = document.createElement("div");
+    let searchHide = document.createElement("div");
+    let searchHideInside = document.createElement("div");
+    let boxWidth = document.createElement("input");
+    let submitButton = document.createElement("button");
+    let taskBackground = document.createElement("div");
+    let pendingTaskHeight = document.createElement("div");
+    let pendingTask = document.createElement("div");
+    let specifyTask = document.createElement("div");
+    let completedTag = document.createElement("span");
+    let whiteRectangle = document.createElement("div");
+    let search = document.createElement("span");
+    let searchIcon = document.createElement("span");
+    
+    materialSymbols.className = "material-symbols-outlined";
+    symbolsOutlined.className = "symbols-outlined";
+    toDoAlign.className = "toDoAlign";
+    todo.className = "toDo";
+    leftRectangle.className = "leftRectangle";
+    boxWidth.className = "boxWidth";
+    topRectangle.className = "topRectangle";
+    submitButton.className = "submitButton";
+    submitButton.addEventListener("click",function() {
+        apiHit(data);
+    })
+    taskBackground.className = "taskBackground";
+    whiteRectangle.className = "whiteRectangle";
+    search.className = "search";
+    searchIcon.className = "material-symbols-outlined search-icon-color";
 
+    materialSymbols.innerText = "apps";
+    todo.innerText = "To Do";
+    submitButton.innerText = "Add";
+    searchIcon.innerText = "search";
+
+    boxWidth.placeholder = "  Add Task";
+
+    searchHide.setAttribute("id","searchHide");
+    boxWidth.setAttribute("id","inputValue");
+    taskBackground.setAttribute("id","tasks");
+    pendingTaskHeight.setAttribute("id","pendingTaskHeight");
+    pendingTask.setAttribute("id","pendingTask");
+    specifyTask.setAttribute("id","specifyTask");
+    completedTag.setAttribute("id","completedTag");
+    whiteRectangle.setAttribute("id","whiteRectangle");
+
+    
+    specifyTask.appendChild(completedTag);
+    taskBackground.appendChild(specifyTask);
+    pendingTaskHeight.appendChild(pendingTask);
+    taskBackground.appendChild(pendingTaskHeight);
+    searchHide.appendChild(taskBackground);
+    searchHideInside.appendChild(submitButton);
+    searchHideInside.appendChild(boxWidth);
+    searchHide.appendChild(searchHideInside);
+    topRectangle.appendChild(searchHide);
+    topRectangle.appendChild(leftRectangle);
+    toDoAlign.appendChild(todo);
+    symbolsOutlined.appendChild(toDoAlign);
+    symbolsOutlined.appendChild(materialSymbols);
+    topRectangle.appendChild(symbolsOutlined);
+    search.appendChild(searchIcon);
+    whiteRectangle.appendChild(search);
+    topRectangle.appendChild(whiteRectangle);
+    document.body.appendChild(topRectangle);
+    searchTask();
+    //getTaskValue();
+}
+function welcomePage() {
+    let welcomeDiv = document.createElement("div");
+    let sinIn = document.createElement("span");
+    let email = document.createElement("span");
+    let emailInput = document.createElement("input");
+    let buttons = document.createElement("button");
+    let buttonOk = document.createElement("button");
+
+    emailInput.setAttribute("id","emailInput");
+    sinIn.className = "sinIn";
+    sinIn.innerText = "Sign -In";
+    email.innerText = " Email - Id :";
+    email.className = "email";
+    emailInput.placeholder = "Enter Your Email Id";
+    buttons.innerText = "Sig - Up";
+    buttons.className = "sigUp";
+    buttonOk.innerText = "ok";
+    buttonOk.className = "buttonOk";
+    buttonOk.addEventListener("click",function() {
+        let emailValue =  document.getElementById("emailInput").value;
+        welcomeDiv.remove();
+        signUpChecking(emailValue);
+    })
+    welcomeDiv.appendChild(buttonOk);
+    welcomeDiv.appendChild(buttons);
+    email.appendChild(emailInput);
+    welcomeDiv.appendChild(email);
+    welcomeDiv.appendChild(sinIn);
+    welcomeDiv.className = "welcomeDiv";
+    buttons.addEventListener("click",function() {
+        login();
+        welcomeDiv.remove();
+    })
+    document.body.appendChild(welcomeDiv);
+}
+function signUpChecking(emailId) {
+    fetch("http://localhost:8080/api/v1/user/get?emailId="+emailId)
+    .then((response) => response.json())
+    .then((data) => todoPage(data))   
 }

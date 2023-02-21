@@ -26,6 +26,9 @@ html,body {
     margin : -2.8% 0% 0% 4%;
     font-family : 'Poppins', sans-serif;
     color : white;
+    position: relative;
+    top: 28%;
+    left: 100%;
 }
 .toDo:hover {
     text-decoration : underline;
@@ -34,7 +37,7 @@ html,body {
 .whiteRectangle {
     background-color : white;
     width : 31%;
-    margin : -1.8% 0% 0% 31%;
+    margin : -3% 0% 0% 31%;
     height : 64%;
 }
 .search {
@@ -50,7 +53,8 @@ html,body {
     background-color : lightgray;
     width : 25%;
     height : 32.74em;
-    margin-top : 0.58%;
+    position: absolute;
+    top: 9%;
 }
 .fontAlign {
     position : absolute;
@@ -217,4 +221,34 @@ html,body {
     position: absolute;
     top: 53%;
     left: 15%;
+}
+.welcomeDiv {
+    background-color: lightgray;
+    width: 34%;
+    height: 46%;
+    position: absolute;
+    top: 20%;
+    left: 33%;
+}
+.sinIn {
+    font-size: 2em;
+    position: absolute;
+    top: 3%;
+    left: 40%;
+}
+.email {
+    font-size: 1em;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+.sigUp {
+    position: absolute;
+    top: 62%;
+    left: 40%;
+}
+.buttonOk {
+    position: absolute;
+    top: 29%;
+    left: 73%;
 }

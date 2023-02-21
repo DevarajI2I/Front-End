@@ -1,7 +1,10 @@
 package com.ideas2it.todobackend.entity;
 
-import javax.persistence.Entity;
+import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +26,10 @@ import lombok.Setter;
 public class Todo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id; 
 	private String taskName;
 	private boolean completedStatus;
+	@ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+	@JoinColumn
+	private User user;
 }
