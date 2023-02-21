@@ -324,7 +324,7 @@ function todoPage(data) {
     topRectangle.appendChild(whiteRectangle);
     document.body.appendChild(topRectangle);
     searchTask();
-    //getTaskValue();
+    getTaskValue();
 }
 function welcomePage() {
     let welcomeDiv = document.createElement("div");
