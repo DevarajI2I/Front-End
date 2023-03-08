@@ -1,0 +1,335 @@
+body{
+    margin : 0px;
+}
+.topRectangle {
+    background-color : #2564cf;
+    height : 49px;
+}
+.topRectangle .appLauncherAlign {
+    color : white;
+    position : absolute;
+    top : 10px;
+    left : 10px;
+}
+.topRectangle .todoTextAlign {
+    color : white;
+    position : absolute;
+    left : 54px;
+    top : 14px;
+    font-weight : 548;
+}
+.topRectangle .todoTextAlign .todoFont {
+    font-family : Arial, Helvetica, sans-serif;
+}
+.topRectangle .searchBox {
+    background-color : white;
+    height : 35px;
+    position : absolute;
+    width : 32%;
+    left : 31%;
+    top : 7px;
+    border-radius : 3px;
+}
+.searchIcon {
+    transform : rotate(-275deg);
+    position : absolute;
+    color : #5a77ce;
+    top : 3px;
+    left : 4px;
+}
+.topRectangle .settingIcon {
+    width : 2%;
+    position : absolute;
+    left: 86%;
+    top : 12px;
+    color : white;
+}
+.questionMarkIcon {
+    color : white;
+    position : absolute;
+    left : 89.4%;
+    top : 11px;
+}
+.leftRectangle {
+    width : 23%;
+    height : 33em;
+}
+.middleSquare {
+    position : absolute;
+    background-color : whitesmoke;
+    width : 76.8%;
+    height : 33em;
+    top : 49px;
+    left : 18.2em;
+}
+.menuIcon {
+    position : relative;
+    left : 23px;
+    top : 28px;
+}
+.sunIcon {
+    position : relative;
+    top : 49px;
+    left : 23px;
+    width: 88%;
+}
+.myDayText {
+    position : relative;
+    top : -6px;
+    left : 10px;
+    font-family : Arial, Helvetica, sans-serif;
+}
+.starIcon {
+    position : relative;
+    top : 63px;
+    left : 23px;
+}
+.importantText {
+    position : relative;
+    top : -6px;
+    left : 10px;
+    font-family : Arial, Helvetica, sans-serif;
+}
+.sunIconAlign {
+    top : 24px;
+    position : absolute;
+    left : 24px;
+}
+.myDayTextAlign {
+    position : relative;
+    top : -3px;
+    left : 10px;
+    font-family : Arial, Helvetica, sans-serif;
+    font-size : 21px;
+}
+.date {
+    top : 7px;
+    position : relative;
+    left : 5px;
+    color : RGB(96, 94, 92);
+    font-family : Arial, Helvetica, sans-serif;
+    font-size : 13px;
+}
+.createTaskDiv {
+    height : 26.3em;
+    position : relative;
+    top : 106px;
+}
+.inputDiv {
+    background-color : white;
+    height : 51px;
+    width : 93%;
+    position : relative;
+    left : 28px;
+    border-radius : 6px  6px 0px 0px ;
+    margin-bottom : 6px;
+}
+.inputCircle {
+    color : RGB(37, 100, 207);
+    top : 12px;
+    position : relative;
+    left : 23px;
+    cursor : pointer;
+}
+.createTaskDiv .inputDiv .inputValue {
+    position : relative;
+    left : 65px;
+    width : 76%;
+    height : 30px;
+    top : -19px;
+    color : RGB(37, 100, 207);
+}
+.inputValue .inputBoxAlign {
+    width: 98%;
+    top : 2px;
+    position : relative;
+    height : 22px;
+    border-style : none;
+    outline : none;
+    background-color : white;
+}
+input::-webkit-input-placeholder {
+    color : RGB(37, 100, 207);
+}
+input:focus::-webkit-input-placeholder {
+    color : rgb(39, 38, 38);
+}
+.inputBottom {
+    background-color : RGB(250, 249, 248);
+    height : 44px;
+    position : relative;
+    top : -1px;
+    border-radius : 0px 0px 6px 6px;
+    width : 93%;
+    left : 27px;
+}
+.calendar {
+    position : relative;
+    top : 13px;
+}
+.plannedText {
+    font-family : Arial, Helvetica, sans-serif;
+    position : relative;
+    left : 11px;
+    top : -5px
+}
+.person {
+    position : relative;
+    top : 26px;
+}
+.personText {
+    font-family : Arial, Helvetica, sans-serif;
+    position : relative;
+    top : -5px;
+    left : 12px;  
+}
+.calendarAlign {
+    position : relative;
+    top : 11px;
+    left : 23px;
+}
+.bellIcon {
+    left : 40px;
+    position : absolute;
+    top : -1px;
+}
+.loopArrow {
+    position : absolute; 
+    left : 80px;
+    top : -1px;
+}
+.addButton {
+    left : 89%;
+    position : relative;
+    top : -6px;
+    width : 4%;
+    background-color : white;
+    color : gray;
+    border : none;
+    border : 0.1px solid lightgray;
+}
+.homeIcon {
+    position : relative;
+    top : 35px;
+}
+.homeText {
+    position : relative;
+    left : 11px;
+    top : -4px;
+    font-family : Arial, Helvetica, sans-serif;
+}
+.hrAlign {
+    width : 89%;
+    position : relative;
+    left : -25px;
+    top : 14px;
+}
+.pluseIcon {
+    position : relative;
+    top : 8em;
+    left : 24px;
+    color : RGB(37, 100, 207);
+    width: 85%;
+}
+.newlistText {
+    font-family : Arial, Helvetica, sans-serif;
+    position : relative;
+    top : -5px;
+    left : 12px;
+}
+.notesIcon {
+    position : relative;
+    top : -24px;
+    left : 219px;
+    width : 8%;
+}
+.bottomIcons {
+    position : relative;
+    top : 16em;
+    height : 34px;
+}
+.mesageIcon {
+    position : relative;
+    left : 18px;
+}
+.calendarIcon {
+    position : relative;
+    top : -1.77em;
+    left : 69px;
+}
+.peoplesIcon {
+    position : relative;
+    top : -3.5em;
+    left : 7.5em;
+}
+.attachIcon {
+    position : relative;
+    top : -5.2em;
+    left : 10.4em;
+}
+.tickIcon {
+    color : #2564cf;
+    position : relative;
+    top : -7em;
+    left : 14em;
+}
+.taskValue {
+    top : 9px;
+    position : relative;
+    height : 19.3em;
+    overflow : auto;
+}
+.mainInputDiv {
+    height : 51px;
+    width : 100%;
+}
+.mainCompletedDiv {
+    width: 93%;
+    left: 30px;
+    top: 6px;
+    position: relative;
+    display: none;
+}
+.completedText {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    left: 37px;
+    bottom: 24px;
+    width: 24%;
+}
+.appendNewDiv {
+    width : 99%;
+    left : 4px;
+    top : 6px;
+    position : relative;
+    display : none;
+}
+.deleteIcon {
+    width : 4%;
+    position : absolute;
+    left : 114%;
+    top : 6px;
+    cursor : pointer;
+}
+.editIcon {
+    width : 4%;
+    height : 13px;
+    position : absolute;
+    left : 105%;
+    top : 4px;
+    cursor : pointer;
+}
+.countValue {
+    position: relative;
+    left: 5%;
+    color: gray;
+}
+.userIcon {
+    width : 4%;
+    position : absolute;
+    left : 92.7%;
+    color : white;
+}
+.userIcon .align {
+    font-size : xxx-large;
+}

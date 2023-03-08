@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+    <head>
+        <title>ToDo</title>
+        <meta charset = "UTF-8">
+        <meta name = "description" content = "to-do app">
+        <meta name = "author" content = "Devaraj V">
+        <meta name = "keyword" content = "HTML, CSS, JavaScript">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <link rel = "stylesheet" href = "ToDo.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    </head>
+    <body>
+        <div class = "topRectangle">
+            <div class = "appLauncherAlign">
+                <span class = "material-symbols-outlined" abbr title = "App Launcher">apps</span>
+            </div>
+            <div class = "todoTextAlign">
+                <span class = "todoFont">To Do</span>
+            </div>
+            <div class = "searchBox">
+                <span class = "searchIcon">
+                    <span class="material-symbols-outlined search-icon search-icon-color">
+                        search
+                    </span></i>
+                </span>
+            </div>
+            <div class = "settingIcon">
+                <span class="material-symbols-outlined" style = "font-size: 20px;">
+                    settings
+                </span>
+            </div>
+            <div class = "questionMarkIcon">
+                <span class="material-symbols-outlined">
+                    question_mark
+                </span>
+            </div>
+            <div class = "userIcon" id = "userIcon">
+                <span class="material-symbols-outlined align">
+                    circle
+                </span>
+            </div>
+        </div>
+        <div class = "leftRectangle">
+            <div class = "menuIcon">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+            <div class = "sunIcon">
+                <span class="material-symbols-outlined">
+                    light_mode
+                </span>
+                <span class = "myDayText">My Day</span>
+            </div>
+            <div class = "starIcon">
+                <span class="material-symbols-outlined">
+                    star
+                </span>
+                <span class = "importantText">Importance</span>
+                <div class = "calendar">
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span>
+                    <span class = "plannedText">Planned</span>
+                </div>
+                <div class = "person">
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+                    <span class = "personText">Assigned to me</span>
+                </div>
+                <div class = "homeIcon">
+                    <span class="material-symbols-outlined">
+                        home
+                    </span>
+                    <span class = "homeText">Tasks</span>
+                    <hr class = "hrAlign">
+                </div>
+            </div>
+            <div class = "pluseIcon">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+                <span class = "newlistText">New List</span>
+                <div class = "notesIcon">
+                    <span class="material-symbols-outlined" style = "font-size: 19px;">
+                        add_notes
+                    </span>
+                </div>
+            </div>
+            <div class = "bottomIcons">
+                <div class = "mesageIcon">
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+                </div>
+                <div class = "calendarIcon">
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span>
+                </div>
+                <div class = "peoplesIcon">
+                    <span class="material-symbols-outlined">
+                        group
+                    </span>
+                </div>
+                <div class = "attachIcon">
+                    <span class="material-symbols-outlined">
+                        attach_file
+                    </span>
+                </div>
+                <div class = "tickIcon">
+                    <span class="material-symbols-outlined">
+                        done_outline
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class = "middleSquare">
+            <div class = "sunIconAlign">
+                <span class="material-symbols-outlined">
+                    light_mode
+                </span>
+                <span class = "myDayTextAlign">My Day <span>...</span></span>
+                <div class = "date" id = "date"></div>
+            </div>
+            <div class = "createTaskDiv">
+                <div class = "mainInputDiv">
+                    <div id = "createDiv" class = "inputDiv">
+                        <div class = "inputCircle" id = "inputCircle">
+                            <span class = "material-symbols-outlined">
+                                radio_button_unchecked
+                            </span>
+                        </div>
+                        <div class = "inputValue">
+                            <input  id = "inputValue" type = "text" placeholder = "Add a task" class = "inputBoxAlign">
+                            <div class = "deleteIcon">
+                                <span class="material-symbols-outlined">
+                                </span>
+                            </div>
+                            <div class = "editIcon">
+                                <span class="material-symbols-outlined">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "inputBottom">
+                        <div class = "calendarAlign">
+                            <span class="material-symbols-outlined" style = "font-size: 20px;">
+                                calendar_month
+                            </span>
+                            <div class = "bellIcon">
+                                <span class="material-symbols-outlined">
+                                    notifications
+                                </span>
+                            </div>
+                            <div class = "loopArrow">
+                                <span class="material-symbols-outlined">
+                                    repeat
+                                </span>
+                            </div>
+                            <button class = "addButton" type = "button" >Add</button>
+                        </div>
+                    </div>
+                    <div id = "taskValue" class = "taskValue">
+                        <div id = "pendingTask">
+                        </div>         
+                        <div id = "completedTask" class = "completedTask">
+                            <div id = "mainCompletedDiv" class = "mainCompletedDiv">
+                                <div id = "completedArrow" class = "completedArrow">
+                                    <span class="material-symbols-outlined" id = "downArrow">
+                                        chevron_right
+                                    </span>
+                                </div>
+                                <div id = "completedText" class = "completedText">
+                                    Completed
+                                    <span id = "countValue" class = "countValue"></span>
+                                </div>
+                            </div>
+                            <div id = "appendNewDiv" class = "appendNewDiv"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src = "ToDo.js"></script>
+</html>

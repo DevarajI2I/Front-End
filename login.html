@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "description" content = "login">
+    <meta name = "author" content = "Devaraj v">
+    <meta name = "keyword" content = "html,css,JavaScript">
+    <meta  name = "viewport" content = "width = device-width,initial-scale = 1.0">
+    <title>login page</title>
+    <link rel = "stylesheet" href = "login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class = "masterDiv" id = "masterDiv">
+        <div class = "loginDiv">
+            <div class = "welcome">
+                <span class="material-symbols-outlined icon">
+                    widgets
+                </span>
+                <span class = "welcomeText">Welcome</span>
+                <div class = "signInText">Sign In
+                    <div class = "signInInput">
+                        <form onsubmit = "getUser()" action = "ToDo.html">
+                            <input type = "email" placeholder = "Enter your email id" class = "inputDiv" pattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required id = "emailId">
+                            <input class = "okButton" value = "Ok" type = "submit">
+                        </form>
+                    </div>
+                    <div class = "signUp"><span class = "noAccont">No account ? </span>
+                        <span class = "createNew" onclick = "location.href =' signUp.html';">Create new !</span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src = "ToDo.js"></script>
+</html>

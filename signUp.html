@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "description" content = "signUp page">
+    <meta name = "author" content = "Devaraj V">
+    <meta name = "keyword" content = "html,css">
+    <meta name = "viewport" content = "width = device-width,initial-scale = 1.0">
+    <title>SignUp Page</title>
+    <link rel = "stylesheet" href = "signUp.css">
+</head>
+<body>
+    <div class = "mainDiv">
+        <div class = "signUpMainDiv">
+            <div class = "signUpText">Sign up</div>
+            <div class = "formDiv">
+                <form class = "signUpForm"  onsubmit = "addUser()" action = "login.html">
+                    <input type = "text" placeholder = "Enter your name" class = "name" pattern = "[A-Za-z]{2,30}" required id = "userName">
+                    <input type = "text" placeholder = "Enter your email id" class = "email" pattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required id = "userEmail">
+                    <input type = "submit" value = "submit" class = "submitButton">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src = "signUp.js"></script>
+</html>
